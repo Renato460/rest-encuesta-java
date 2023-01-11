@@ -23,7 +23,7 @@ public class RestEncuestaJavaApplication {
 
             Genero genero2 = new Genero();
             genero2.setGenero_id(2);
-            genero2.setGenero("ROck");
+            genero2.setGenero("Rock");
 
             Encuesta encuesta = new Encuesta();
             encuesta.setId(1);

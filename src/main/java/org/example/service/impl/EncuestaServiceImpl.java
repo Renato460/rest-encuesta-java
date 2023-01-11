@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Qualifier(value = "encuesta_service")
+@Qualifier(value = "encuestaService")
 public class EncuestaServiceImpl implements EncuestaService {
     private static final String SIN_RESULTADOS = "Sin Resultados";
     public static final String YA_EXISTE_MAIL = "Ya existe encuesta con éste mail: ";
