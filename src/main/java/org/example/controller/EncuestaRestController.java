@@ -2,15 +2,12 @@ package org.example.controller;
 
 
 import org.example.model.Encuesta;
+import org.example.model.Genero;
 import org.example.service.EncuestaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EncuestaRestController {
 
     private final EncuestaService encuestaService;
@@ -25,6 +23,13 @@ public class EncuestaRestController {
     @Autowired
     public EncuestaRestController(final EncuestaService encuestaService){
         this.encuestaService = encuestaService;
+    }
+
+    @GetMapping(path = {"/encuesta/generos"})
+    public ResponseEntity<Map<String,Object>> obtenerTodosLosGeneros(){
+        List<Genero> generos = encuestaService.findAllGeneros();
+        Map<String, Object> respuesta = getStringObjectMap(generos);
+        return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
     @GetMapping(path = {"/encuesta/all"})
