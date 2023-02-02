@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/encuesta")
 @CrossOrigin(origins = "http://localhost:4200")
 public class EncuestaRestController {
 
@@ -25,21 +25,21 @@ public class EncuestaRestController {
         this.encuestaService = encuestaService;
     }
 
-    @GetMapping(path = {"/encuesta/generos"})
+    @GetMapping(path = {"/generos"})
     public ResponseEntity<Map<String,Object>> obtenerTodosLosGeneros(){
         List<Genero> generos = encuestaService.findAllGeneros();
         Map<String, Object> respuesta = getStringObjectMap(generos);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
-    @GetMapping(path = {"/encuesta/all"})
+    @GetMapping(path = {"/all"})
     public ResponseEntity<Map<String,Object>> obtenerTodasEncuestas(){
         List<Encuesta> encuestas = encuestaService.findAllEncuestas();
         Map<String, Object> respuesta = getStringObjectMap(encuestas);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/encuesta/save")
+    @PostMapping(path = "/save")
     public ResponseEntity<Map<String,Object>> guardarEncuesta(
             @RequestBody Encuesta encuestaRequest
     ){
