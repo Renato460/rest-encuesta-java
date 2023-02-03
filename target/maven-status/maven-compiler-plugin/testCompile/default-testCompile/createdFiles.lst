@@ -1,0 +1,4 @@
+org/example/controller/EncuestaRestControllerTest.class
+org/example/repository/MailRepositoryTest.class
+org/example/repository/GeneroRepositoryTest.class
+org/example/service/impl/EncuestaServiceImplTest.class

@@ -4,6 +4,7 @@ import org.example.http_errors.ConflictException;
 import org.example.http_errors.NotFoundException;
 import org.example.model.Encuesta;
 import org.example.model.Genero;
+import org.example.model.dto.EncuestaDTO;
 import org.example.repository.GeneroRepository;
 import org.example.repository.MailRepository;
 import org.example.service.EncuestaService;
@@ -51,7 +52,8 @@ public class EncuestaServiceImpl implements EncuestaService {
 
     @Transactional
     @Override
-    public Encuesta guardarEncuesta(Encuesta encuesta) {
+    public Encuesta guardarEncuesta(EncuestaDTO encuestaDTO) {
+        Encuesta encuesta = new Encuesta(encuestaDTO.getId(), encuestaDTO.getMail(), encuestaDTO.getGenero());
         mailRepository.findByMail(encuesta.getMail())
                 .ifPresentOrElse(
                         p -> {

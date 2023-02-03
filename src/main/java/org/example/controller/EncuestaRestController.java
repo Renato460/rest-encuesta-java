@@ -3,6 +3,7 @@ package org.example.controller;
 
 import org.example.model.Encuesta;
 import org.example.model.Genero;
+import org.example.model.dto.EncuestaDTO;
 import org.example.service.EncuestaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/encuesta")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200","*"})
 public class EncuestaRestController {
 
     private final EncuestaService encuestaService;
@@ -41,7 +42,7 @@ public class EncuestaRestController {
 
     @PostMapping(path = "/save")
     public ResponseEntity<Map<String,Object>> guardarEncuesta(
-            @RequestBody Encuesta encuestaRequest
+            @RequestBody EncuestaDTO encuestaRequest
     ){
         Encuesta encuesta = encuestaService.guardarEncuesta(encuestaRequest);
         Map<String, Object> respuesta = getStringObjectMap(encuesta);
